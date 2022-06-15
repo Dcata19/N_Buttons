@@ -1,5 +1,5 @@
-var random_number;
-var container = document.getElementById('buttons');
+let random_number;
+let container = document.getElementById('buttons');
 let check = true;
 
 function NButtons () {
