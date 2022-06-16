@@ -1,10 +1,15 @@
-let random_number;
 let container = document.getElementById('buttons');
-let check = true;
+
+function getNumberOfButtons () {
+    return document.getElementById("number").value;
+}
+
+function randomNumber() {
+    return Math.floor(Math.random() * getNumberOfButtons()) + 1;
+}
 
 function NButtons () {
-    let number_of_buttons = document.getElementById("number").value;
-    random_number = Math.floor(Math.random() * number_of_buttons) + 1;
+    let number_of_buttons = getNumberOfButtons();
     if (number_of_buttons == '' || number_of_buttons == 0) {
         alert('Please, introduce a number!');
     } else {
@@ -22,10 +27,12 @@ function createButton(i) {
     button.className = 'm-1 btn btn-primary btn-lg';
     container.appendChild(button);
     button.onclick = function checkWinnerButton() {
-        if (button.id == random_number) {
+        if (button.id == randomNumber()) {
             alert('You won!');
+            location.reload();
         } else {
             alert('You lost!');
+            location.reload();
         }
     }
 }
