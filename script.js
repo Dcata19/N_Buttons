@@ -1,22 +1,18 @@
 let container = document.getElementById('buttons');
+let randomNumber;
 
-function getNumberOfButtons () {
+function getNumberOfButtons() {
     return document.getElementById("number").value;
 }
 
-function randomNumber() {
+function generateRandomNumber() {
     return Math.floor(Math.random() * getNumberOfButtons()) + 1;
 }
 
-function NButtons () {
-    let number_of_buttons = getNumberOfButtons();
-    if (number_of_buttons == '' || number_of_buttons == 0) {
-        alert('Please, introduce a number!');
-    } else {
-        document.getElementById('buttons').innerText = ''
-        for (let i = 1; i <= number_of_buttons; ++i) {
-            createButton(i);
-        }
+function generateButtons() {
+    randomNumber = generateRandomNumber();
+    for (let i = 1; i <= getNumberOfButtons(); ++i) {
+        createButton(i);
     }
 }
 
@@ -27,7 +23,7 @@ function createButton(i) {
     button.className = 'm-1 btn btn-primary btn-lg';
     container.appendChild(button);
     button.onclick = function checkWinnerButton() {
-        if (button.id == randomNumber()) {
+        if (button.id == randomNumber) {
             alert('You won!');
             location.reload();
         } else {
